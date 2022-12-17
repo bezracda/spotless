@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class DemoApplicationTests {
+public class ProductMarketApplicationTests {
 
 	@Test
 	public void contextLoads() {
@@ -22,7 +22,7 @@ public class DemoApplicationTests {
 
 	@Test
 	public void homeResponse() {
-		String body = this.restTemplate.getForObject("/", String.class);
-		assertThat(body).isEqualTo("Spring is here!");
+		String body = this.restTemplate.getForObject("/test", String.class);
+		assertThat(body).isEqualTo("Product is here!");
 	}
 }

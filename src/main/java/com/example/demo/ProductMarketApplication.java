@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
-public class DemoApplication {
+public class ProductMarketApplication {
 
-	@GetMapping("/")
+	@GetMapping("/test")
 	String home() {
-		return "Spring is here!";
+		return "Product is here!";
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(ProductMarketApplication.class, args);
 	}
 }

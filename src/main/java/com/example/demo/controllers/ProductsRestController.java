@@ -67,19 +67,4 @@ public class ProductsRestController {
         productService.deleteProductById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    @ExceptionHandler
-    public ResponseEntity<IncorrectProductData> handleException(NoSuchProductException exception) {
-        IncorrectProductData data = new IncorrectProductData();
-        data.setInfo(exception.getMessage());
-        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<IncorrectProductData> handleException(Exception exception) {
-        IncorrectProductData data = new IncorrectProductData();
-        data.setInfo(exception.getMessage());
-        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
-    }
-
 }
