@@ -1,17 +1,12 @@
 package com.example.demo.controllers;
 
+import com.example.demo.exception_handling.IncorrectProductData;
+import com.example.demo.exception_handling.NoSuchProductException;
 import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.services.ProductService;
 
 import java.util.List;
@@ -35,13 +30,14 @@ public class ProductsRestController {
                 : new ResponseEntity<>(products, HttpStatus.NOT_FOUND);
     }
 
-    //TODO exception handler
+    //TODO exception handler - DONE
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable Long id) {
         Product product = productService.findProductById(id);
-        return (product != null)
-                ? new ResponseEntity<>(product, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.CONFLICT);
+        if (product == null) {
+            throw new NoSuchProductException("There is no product with ID = " + id + "in Database");
+        }
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
     //TODO exception handler
@@ -51,25 +47,39 @@ public class ProductsRestController {
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
-    //TODO exception handler
+    //exception handler - DONE
     @PutMapping("/products/{id}")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long id) {
         if (productService.findProductById(id) == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new NoSuchProductException("There is no product with ID = " + id + "in Database");
         }
         product.setId(id);
         productService.updateProduct(product);
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    //TODO exception handler
+    //exception handler - DONE
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable Long id) {
         if (productService.findProductById(id) == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new NoSuchProductException("There is no product with ID = " + id + "in Database");
         }
         productService.deleteProductById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<IncorrectProductData> handleException(NoSuchProductException exception) {
+        IncorrectProductData data = new IncorrectProductData();
+        data.setInfo(exception.getMessage());
+        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<IncorrectProductData> handleException(Exception exception) {
+        IncorrectProductData data = new IncorrectProductData();
+        data.setInfo(exception.getMessage());
+        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
     }
 
 }
