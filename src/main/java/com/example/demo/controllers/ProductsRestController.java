@@ -30,7 +30,6 @@ public class ProductsRestController {
                 : new ResponseEntity<>(products, HttpStatus.NOT_FOUND);
     }
 
-    //TODO exception handler - DONE
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable Long id) {
         Product product = productService.findProductById(id);
@@ -40,14 +39,12 @@ public class ProductsRestController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    //TODO exception handler
     @PostMapping("/products")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         productService.addProduct(product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 
-    //exception handler - DONE
     @PutMapping("/products/{id}")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long id) {
         if (productService.findProductById(id) == null) {
@@ -58,7 +55,6 @@ public class ProductsRestController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    //exception handler - DONE
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable Long id) {
         if (productService.findProductById(id) == null) {
