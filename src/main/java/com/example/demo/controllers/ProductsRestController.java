@@ -35,7 +35,7 @@ public class ProductsRestController {
     public ResponseEntity<Product> getProduct(@PathVariable Long id) {
         Product product = productService.findProductById(id);
         if (product == null) {
-            throw new NoSuchProductException("There is no product with ID = " + id + "in Database");
+            throw new NoSuchProductException("There is no product with ID = " + id + " in Database");
         }
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
@@ -51,7 +51,7 @@ public class ProductsRestController {
     @PutMapping("/products/{id}")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long id) {
         if (productService.findProductById(id) == null) {
-            throw new NoSuchProductException("There is no product with ID = " + id + "in Database");
+            throw new NoSuchProductException("There is no product with ID = " + id + " in Database");
         }
         product.setId(id);
         productService.updateProduct(product);
@@ -62,7 +62,7 @@ public class ProductsRestController {
     @DeleteMapping("/products/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable Long id) {
         if (productService.findProductById(id) == null) {
-            throw new NoSuchProductException("There is no product with ID = " + id + "in Database");
+            throw new NoSuchProductException("There is no product with ID = " + id + " in Database");
         }
         productService.deleteProductById(id);
         return new ResponseEntity<>(HttpStatus.OK);
