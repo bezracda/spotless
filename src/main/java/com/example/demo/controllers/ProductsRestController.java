@@ -17,7 +17,7 @@ public class ProductsRestController {
 
     private final ProductService productService;
 
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
         if ((products == null) || (products.isEmpty())) {
@@ -35,7 +35,7 @@ public class ProductsRestController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping("/")
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         productService.addProduct(product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
