@@ -1,23 +1,19 @@
 package com.example.demo.services.implementation;
 
 import com.example.demo.models.Product;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.repositories.ProductRepository;
 import com.example.demo.services.ProductService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductServiceImplementation implements ProductService {
 
     private final ProductRepository productRepository;
-
-    @Autowired
-    public ProductServiceImplementation(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     @Override
     @Transactional
@@ -26,11 +22,13 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Product findProductById(long id) {
         return productRepository.findProductById(id);
     }
