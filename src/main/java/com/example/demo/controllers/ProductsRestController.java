@@ -56,7 +56,7 @@ public class ProductsRestController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Возвращает товар по id")
+    @Operation(summary = "Возвращает товар по идентификатору")
     @ApiResponse(
             responseCode = "200",
             description = "Товар с таким идентификатором найден",
@@ -100,7 +100,7 @@ public class ProductsRestController {
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Изменяет товар с указанным id")
+    @Operation(summary = "Изменяет товар с указанным идентификатором")
     @ApiResponse(
             responseCode = "200",
             description = "Товар успешно изменен",
@@ -113,7 +113,9 @@ public class ProductsRestController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = IncorrectProductData.class)
             ))
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable Long id) {
+    public ResponseEntity<Product> updateProduct(
+            @RequestBody Product product,
+            @Parameter(description = "Идентификатор товара") @PathVariable Long id) {
         if (productService.findProductById(id) == null) {
             throw new NoSuchProductException("There is no product with ID = " + id + " in Database");
         }
@@ -123,7 +125,7 @@ public class ProductsRestController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Удаляет товар с указанным id")
+    @Operation(summary = "Удаляет товар с указанным идентификатором")
     @ApiResponse(
             responseCode = "204",
             description = "Товар успешно удален",
@@ -136,7 +138,8 @@ public class ProductsRestController {
             content = @Content(mediaType = "application/json",
                     schema = @Schema(implementation = IncorrectProductData.class)
             ))
-    public ResponseEntity<Product> deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Product> deleteProduct(
+            @Parameter(description = "Идентификатор товара") @PathVariable Long id) {
         if (productService.findProductById(id) == null) {
             throw new NoSuchProductException("There is no product with ID = " + id + " in Database");
         }
