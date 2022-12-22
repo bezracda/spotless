@@ -25,7 +25,7 @@ public class Product {
     private long id;
 
     @Column(name = "type")
-    @Schema(description = "Тип повара")
+    @Schema(description = "Тип товара")
     private String type;
 
     @Column(name = "description")

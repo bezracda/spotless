@@ -1,0 +1,165 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: market-product
+      comment: "Create table product"
+      changes:
+
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: DECIMAL
+                  constraints:
+
+
+
+
+  - changeSet:
+      id: 2
+      author: market-product
+      comment: "Add product's"
+      changes:
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль морская"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 99
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль йодированная"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 29
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль каменная"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 9
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль поваренная"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 19
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль столовая"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 24
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль гималайская"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 149
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль кошерная"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 799
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль дымовая"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 99
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль пряная"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 129
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: description
+                  value: "Соль фторированная"
+              - column:
+                  name: type
+                  value: "Соль"
+              - column:
+                  name: price
+                  value: 59
+      rollback:
+        - delete:
+            tableName: product
