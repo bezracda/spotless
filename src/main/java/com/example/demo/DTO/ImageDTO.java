@@ -4,9 +4,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-@Schema (description = "Изображение товара")
+@Getter @Setter @Schema (description = "Изображение товара")
+
+
+
+
 public class ImageDTO {
 
     @Schema(description =                 "Идентификатор изображения")
