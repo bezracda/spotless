@@ -2,10 +2,12 @@ package com.example.demo.services.implementation;
 
 import com.example.demo.models.Product;
 import com.example.demo.repositories.ProductRepository;
+import com.example.demo.services.ImageService;
 import com.example.demo.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,8 +19,8 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     @Transactional
-    public void addProduct(Product product) {
-        productRepository.save(product);
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
     }
 
     @Override
@@ -35,8 +37,8 @@ public class ProductServiceImplementation implements ProductService {
 
     @Override
     @Transactional
-    public void updateProduct(Product product) {
-        productRepository.save(product);
+    public Product updateProduct(Product product) {
+        return productRepository.save(product);
     }
 
     @Override

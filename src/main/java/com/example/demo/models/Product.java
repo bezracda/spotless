@@ -1,39 +1,35 @@
 package com.example.demo.models;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import io.swagger.v3.oas.annotations.Hidden;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@Schema(description = "Сущность товара")
+@Hidden
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "Идентификатор товара")
     private long id;
 
-    @Column(name = "type")
-    @Schema(description = "Тип товара")
-    private String type;
+    @Column(name = "category")
+    private String category;
 
-    @Column(name = "description")
-    @Schema(description = "Описание товара")
-    private String description;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "price")
-    @Schema(description = "Цена товара")
     private BigDecimal price;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Image> images = new HashSet<>();
+
 
 }
