@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: market-product
+      comment: "Create table images"
+      changes:
+
+        - createTable:
+            tableName: image
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: image
+                  type: bytea
+                  constraints:
+                    nullable: true
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+
+
+        - addForeignKeyConstraint:
+            baseColumnNames: product_id
+            baseTableName: image
+            constraintName: product_image_fk
+            onDelete: CASCADE
+            referencedColumnNames: id
+            referencedTableName: product

@@ -1,0 +1,128 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: market-product
+      comment: "Add images"
+      changes:
+
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Snickers"
+              - column:
+                  name: image
+                  valueBlobFile: "images/snickers_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 1
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Mars"
+              - column:
+                  name: image
+                  valueBlobFile: "images/mars_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 2
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Bounty"
+              - column:
+                  name: image
+                  valueBlobFile: "images/bounty_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 3
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Kit-Kat"
+              - column:
+                  name: image
+                  valueBlobFile: "images/kit-kat_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 4
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Coca-Cola"
+              - column:
+                  name: image
+                  valueBlobFile: "images/coca-cola_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 5
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Pepsi"
+              - column:
+                  name: image
+                  valueBlobFile: "images/pepsi_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 6
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Fanta"
+              - column:
+                  name: image
+                  valueBlobFile: "images/fanta_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 7
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Sprite"
+              - column:
+                  name: image
+                  valueBlobFile: "images/sprite_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 8
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Водка Stolichnaya"
+              - column:
+                  name: image
+                  valueBlobFile: "images/vodka_stolichnaya_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 9
+        - insert:
+            tableName: image
+            columns:
+              - column:
+                  name: name
+                  value: "Коньяк Старейшина"
+              - column:
+                  name: image
+                  valueBlobFile: "images/konyak_stareishina_1.jpg"
+              - column:
+                  name: product_id
+                  valueNumeric: 10
+

@@ -1,0 +1,129 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: market-product
+      comment: "Add product's"
+      changes:
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Snickers"
+              - column:
+                  name: category
+                  value: "Кондитерские изделия"
+              - column:
+                  name: price
+                  value: 59
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Mars"
+              - column:
+                  name: category
+                  value: "Кондитерские изделия"
+              - column:
+                  name: price
+                  value: 59
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Bounty"
+              - column:
+                  name: category
+                  value: "Кондитерские изделия"
+              - column:
+                  name: price
+                  value: 59
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Kit-Kat"
+              - column:
+                  name: category
+                  value: "Кондитерские изделия"
+              - column:
+                  name: price
+                  value: 59
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Coca-cola"
+              - column:
+                  name: category
+                  value: "Газированные напитки"
+              - column:
+                  name: price
+                  value: 99
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Pepsi"
+              - column:
+                  name: category
+                  value: "Газированные напитки"
+              - column:
+                  name: price
+                  value: 99
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Fanta"
+              - column:
+                  name: category
+                  value: "Газированные напитки"
+              - column:
+                  name: price
+                  value: 99
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Sprite"
+              - column:
+                  name: category
+                  value: "Газированные напитки"
+              - column:
+                  name: price
+                  value: 99
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Водка Stolichnaya"
+              - column:
+                  name: category
+                  value: "Алкоголь"
+              - column:
+                  name: price
+                  value: 329
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: "Коньяк Старейшина"
+              - column:
+                  name: category
+                  value: "Алкоголь"
+              - column:
+                  name: price
+                  value: 899
+      rollback:
+        - delete:
+            tableName: product
