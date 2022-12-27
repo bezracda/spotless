@@ -47,15 +47,4 @@ public class ImageServiceImpl implements ImageService {
         imageRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional
-    public Image toImageEntity(MultipartFile multipartFile) {
-        try {
-            Image image = new Image();
-            image.setImage(multipartFile.getBytes());
-            return image;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

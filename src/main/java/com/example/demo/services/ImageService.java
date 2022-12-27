@@ -12,5 +12,4 @@ public interface ImageService {
     Image findImageById(long id);
     Image updateImage(Image image);
     void deleteImageById(long id);
-    Image toImageEntity (MultipartFile multipartFile);
 }
