@@ -9,10 +9,10 @@ import lombok.Setter;
 @Schema (description = "Изображение товара")
 public class ImageDTO {
 
-                                 @Schema(description = "Идентификатор изображения")
+    @Schema(description =                 "Идентификатор изображения")
     private long id;
 
-    @Schema(description = "Наименование изображения")
+    @Schema(description =                     "Наименование изображения")
     private String name;
 
     @Schema(description = "Идентификатор принадлежности к продукту")
